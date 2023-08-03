@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
   <head>
+    {% load static %}
     <script src="/docs/5.3/assets/js/color-modes.js"></script>
 
     <meta charset="utf-8" />
@@ -222,17 +223,17 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/">Home</a>
+                <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Twitter</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Resume</a>
+                <a class="nav-link" href="{% static 'resume.pdf' %}">Resume</a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link active" href="/blog">Blog</a>
+                <a class="nav-link active" href="{% url 'allblogs' %}"">Blog</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/admin">Admin</a>
@@ -262,8 +263,10 @@
                 alt="blog title"
               />
               <div class="card-body">
-                <a href="#" class="card-link"
-                  ><h5 class="card-title text-primary">{{ blog.title}}</h5></a
+                <a href="{% url 'detail' blog.id %}" class="card-link"
+                  ><h5 class="card-title text-primary">
+                    {{ blog }} {{ blog.title}}
+                  </h5></a
                 >
                 <p class="d-flex justify-content-between align-items-center">
                   <small class="text-body-secondary"
