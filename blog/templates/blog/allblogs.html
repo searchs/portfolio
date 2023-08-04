@@ -273,7 +273,7 @@
                     >{{ blog.pub_date_formatted }}</small
                   >
                 </p>
-                <p class="card-text">{{ blog.summary }}</p>
+                <p class="card-text">{{ blog.summary }}... <a class="text-decoration-none " href="{% url 'detail' blog.id %}">more</a></p>
               </div>
             </div>
           </div>
